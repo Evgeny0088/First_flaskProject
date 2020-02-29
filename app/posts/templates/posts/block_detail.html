@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ block }}
+{% endblock %}
+
+{% block content_title %}
+    {{ block }}
+{% endblock %}
+
+{% block content %}
+    <div class="main content">
+        Block content:
+        <div class="blocks">
+            {% for i in content %}
+                <p>
+                    {{ i }}:{{ content[i] }}
+                </p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

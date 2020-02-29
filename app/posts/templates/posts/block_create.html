@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Block create | Flask blocks
+{% endblock %}
+
+{% block content_title %}
+    Block create
+{% endblock %}
+
+{% block content %}
+<div class="col-md-6">
+    <form action="{{ url_for ('posts.block_create') }}" method="POST">
+      <div class="form-group">
+        <label for="exampleInputLender">Lender</label>
+        <input type="text" class="form-control" id="exampleInputLender" placeholder="Lender" name="Lender"
+               value="{{ request.form.get('Lender','') }}">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputAmount">Amount</label>
+        <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount" name="Amount"
+               value="{{ request.form.get('Amount','') }}">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputBorrower">Borrower</label>
+        <input type="text" class="form-control" id="exampleInputBorrower" placeholder="Borrower" name="Borrower"
+               value="{{ request.form.get('Borrower','') }}">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+        <form action="{{ url_for('posts.blockchain') }}">
+            <button type="submit" class="btn btn-primary">Back to blockchain</button>
+        </form>
+    </form>
+</div>
+{% endblock %}

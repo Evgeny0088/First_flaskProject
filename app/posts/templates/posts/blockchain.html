@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Blockchain | Flask blocks
+{% endblock %}
+
+{% block content_title %}
+    Blockchain transactions
+{% endblock %}
+
+{% block content %}
+    {% for block in pages.items %}
+            <p>
+            <a href="{{ url_for('posts.block_detail',block=block) }}">{{ block }}</a>
+            </p>
+    {% endfor %}
+    {% for page in pages.iter_pages(left_edge=1, right_edge=1, left_current=1,right_current=2) %}
+        {% if page %}
+            {% if pages.page==page %}
+                <a class="btn btn-info mb-4" href="{{ url_for('posts.blockchain', page = page) }}">{{ page }}</a>
+            {% else %}
+                <a class="btn btn-outline-info mb-4" href="{{ url_for('posts.blockchain', page = page) }}">{{ page }}</a>
+            {% endif %}
+        {% else %}
+            ...
+        {% endif %}
+    {% endfor %}
+    <style>
+        div.container form {
+            display: inline;
+            padding: 0px;
+            margin: 0px
+            }
+    </style>
+    <div class="container">
+        <form action="{{ url_for('posts.block_create') }}">
+            <button type="submit" class="btn btn-primary">Create block</button>
+        </form>
+        <form action="{{ url_for('posts.check_blockchain') }}">
+            <button type="submit" class="btn btn-success">Check integrity</button>
+        </form>
+    </div>
+{% endblock %}
